@@ -31,7 +31,7 @@ export const BannerBlock = styled.div`
       left: 0;
       right: 0;
       background: ${theme.colors.black};
-      opacity: 0.85;
+      opacity: 0.65;
     }
   `}
 `
