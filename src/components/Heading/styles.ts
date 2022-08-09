@@ -6,12 +6,13 @@ export type WrapperProps = { hasIcon: boolean } & HeadingProps
 
 const wrapperModifiers = {
   withIcon: (theme: DefaultTheme) => css`
-    svg {
-      width: 1.5rem;
+    display: flex;
+    align-items: center;
 
-      & + span {
-        margin-left: ${theme.spacings.xxsmall};
-      }
+    svg {
+      width: 2.2rem;
+      height: 100%;
+      margin-right: ${theme.spacings.xxsmall};
     }
   `,
 
@@ -36,6 +37,7 @@ const wrapperModifiers = {
 
   small: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.medium};
+
     &::after {
       width: 3rem;
     }
@@ -43,6 +45,7 @@ const wrapperModifiers = {
 
   medium: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.xlarge};
+
     ${media.greaterThan('medium')`
     font-size: ${theme.font.sizes.xxlarge};
   `}

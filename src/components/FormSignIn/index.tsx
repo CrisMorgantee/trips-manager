@@ -8,7 +8,7 @@ import * as S from './styles'
 const FormSignIn = () => {
   return (
     <FormWrapper>
-      <form>
+      <form action="/dashboard" method="POST">
         <TextField
           name="email"
           placeholder="Email"

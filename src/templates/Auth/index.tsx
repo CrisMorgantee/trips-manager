@@ -16,7 +16,7 @@ const Auth = ({ title, children }: AuthProps) => (
     <S.BannerBlock>
       <Image
         src="/img/auth-logo.svg"
-        alt="Trips manager Auth Page"
+        alt="travels manager Auth Page"
         layout="fill"
         objectFit="cover"
       />
@@ -26,15 +26,15 @@ const Auth = ({ title, children }: AuthProps) => (
         </Link>
 
         <div>
-          <Heading size="huge">Manager your trips!</Heading>
+          <Heading size="huge">Manager your travels!</Heading>
           <S.Subtitle>
-            <strong>TRIPS MANAGER</strong> is the best and easily trips organize
-            platform.
+            <strong>TRAVELS MANAGER</strong> is the best and easily travels
+            organize platform.
           </S.Subtitle>
         </div>
 
         <S.Footer>
-          Trips Manager {currentYear} © Todos os Direitos Reservados
+          Travels Manager {currentYear} © Todos os Direitos Reservados
         </S.Footer>
       </S.BannerContent>
     </S.BannerBlock>

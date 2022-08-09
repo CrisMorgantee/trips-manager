@@ -9,29 +9,30 @@ export type WrapperProps = { hasIcon: boolean } & Pick<
 
 const wrapperModifiers = {
   small: (theme: DefaultTheme) => css`
-    height: 3rem;
     font-size: ${theme.font.sizes.xsmall};
   `,
 
   medium: (theme: DefaultTheme) => css`
-    height: 4rem;
     font-size: ${theme.font.sizes.small};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.medium};
   `,
 
   large: (theme: DefaultTheme) => css`
-    height: 5rem;
     font-size: ${theme.font.sizes.medium};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xlarge};
   `,
 
-  fullWidth: () => css`
+  fullWidth: (theme: DefaultTheme) => css`
     width: 100%;
+    padding: ${theme.spacings.xxsmall};
+    font-size: ${theme.font.sizes.medium};
+    font-weight: ${theme.font.bold};
+    line-height: ${theme.spacings.large};
   `,
 
   withIcon: (theme: DefaultTheme) => css`
     svg {
-      width: 1.5rem;
+      width: 2.2rem;
 
       & + span {
         margin-left: ${theme.spacings.xxsmall};
@@ -67,17 +68,19 @@ export const Wrapper = styled.button<WrapperProps>`
     text-decoration: none;
     border-radius: ${theme.border.radius};
     border: 0;
-    padding: ${theme.spacings.xxsmall};
+    opacity: 1;
     cursor: pointer;
+    transition: opacity 400ms ease-in-out;
 
     &:hover {
+      opacity: 0.8;
       background: ${minimal
         ? 'none'
-        : 'linear-gradient(85deg, #712DE0 -28%, #EB2F93 130%)'};
+        : 'linear-gradient(45deg, #712DE0 0, #EB2F93 85%)'};
     }
 
     ${!!size && wrapperModifiers[size](theme)}
-    ${!!fullWidth && wrapperModifiers.fullWidth}
+    ${!!fullWidth && wrapperModifiers.fullWidth(theme)}
     ${!!hasIcon && wrapperModifiers.withIcon(theme)}
     ${!!minimal && wrapperModifiers.minimal(theme)};
     ${!!disabled && wrapperModifiers.disabled()};
