@@ -1,6 +1,6 @@
 {
-  "name": "Trips Manager",
-  "short_name": "Trips Manager",
+  "name": "Travels Manager",
+  "short_name": "Travels Manager",
   "icons": [
     {
       "src": "/img/icon-192.png",
@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "#06092B",
-  "description": "A simple project to manager trips!",
+  "description": "A simple project to manager travels!",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#06092B"
