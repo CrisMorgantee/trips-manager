@@ -4,6 +4,7 @@ export const Container = styled.div`
   ${({ theme }) => css`
     width: 100%;
     max-width: ${theme.grid.container};
+    margin-top: ${theme.spacings.regular};
     margin-left: auto;
     margin-right: auto;
     padding-left: calc(${theme.grid.gutter} / 2);

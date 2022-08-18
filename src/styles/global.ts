@@ -47,6 +47,7 @@ const GlobalStyles: GlobalStyleComponent<
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
+      background-clip: content-box !important;
       -webkit-box-shadow: 0 0 0 30px ${theme.colors.mainBg} inset !important;
       -webkit-text-fill-color: ${theme.colors.white} !important;
     }

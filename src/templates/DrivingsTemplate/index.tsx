@@ -1,17 +1,10 @@
-import {
-  Add,
-  CalendarToday as Calendar,
-  DirectionsCar,
-  Visibility,
-  VisibilityOff
-} from '@styled-icons/material-outlined'
-
+import { Add, DirectionsCar, Home } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
 import { ButtonWrapper } from 'components/ButtonWrapper'
 import { Container } from 'components/Container'
+import { DrivingDetailsProps } from 'components/DrivingDetails'
 import Header from 'components/Header'
 import MonthItem, { CityProps, MonthItemProps } from 'components/MonthItem'
-import { Points } from 'components/Points'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import * as S from './styles'
@@ -21,14 +14,29 @@ export type DashboardProps = {
 }
 
 const Dashboard = () => {
-  const [isVisible, setIsVisible] = useState(false)
   const [months, setMonths] = useState<MonthItemProps[]>([])
   const [citys, setCitys] = useState<CityProps[]>([])
+  const [drivings, setDrivings] = useState<DrivingDetailsProps[]>([])
 
   useEffect(() => {
     setMonths([
       { month: 'September', days: '10', amount: 'R$ 500,00' },
       { month: 'August', days: '10', amount: 'R$ 500,00' }
+    ])
+  }, [])
+
+  useEffect(() => {
+    setDrivings([
+      {
+        date: '10/09',
+        hourStart: '08:00h',
+        hourStop: '12:00h'
+      },
+      {
+        date: '14/09',
+        hourStart: '08:00h',
+        hourStop: '18:10h'
+      }
     ])
   }, [])
 
@@ -49,10 +57,8 @@ const Dashboard = () => {
     ])
   }, [])
 
-  const handleVisibilityChange = () => setIsVisible(!isVisible)
-
-  const handleAction = () => {
-    location.href = '/drivings'
+  const goTo = () => {
+    location.href = '/dashboard'
   }
 
   const handleMoreInfo = ({ month, days, amount }: MonthItemProps) => {
@@ -73,12 +79,10 @@ const Dashboard = () => {
       />
       <Container>
         <Header
-          headingIcon={<Calendar />}
-          title="Months"
-          icon={isVisible ? <Visibility /> : <VisibilityOff />}
-          actionIcon={<DirectionsCar />}
-          onClick={handleVisibilityChange}
-          handleAction={handleAction}
+          headingIcon={<DirectionsCar />}
+          title="Drivings"
+          icon={<Home />}
+          onClick={goTo}
         />
 
         <S.MonthsList>
@@ -86,11 +90,9 @@ const Dashboard = () => {
             <MonthItem
               key={month}
               month={month}
-              days={isVisible ? `${days} dias` : <Points />}
-              amount={isVisible ? amount : <Points />}
-              onClick={() => handleMoreInfo({ month, days, amount })}
-              isVisible={isVisible}
               citys={citys}
+              onClick={() => handleMoreInfo({ month, days, amount })}
+              drivings={drivings}
             />
           ))}
         </S.MonthsList>

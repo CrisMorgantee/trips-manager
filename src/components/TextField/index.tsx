@@ -1,4 +1,4 @@
-import Heading, { lineColorProps } from 'components/Heading'
+import Heading, { HeadingProps, lineColorProps } from 'components/Heading'
 import React, {
   InputHTMLAttributes,
   TextareaHTMLAttributes,
@@ -14,6 +14,7 @@ export type inputSizesProps = 'small' | 'medium' | 'large' | 'adaptative'
 
 export type TextFieldProps = {
   onInput?: (value: string) => void
+  headingSize?: HeadingProps['size']
   inputSize?: inputSizesProps
   icon?: JSX.Element
   label?: string
@@ -26,6 +27,7 @@ export type TextFieldProps = {
 
 const TextField = ({
   onInput,
+  headingSize = 'medium',
   inputSize = 'adaptative',
   icon,
   label,
@@ -48,7 +50,13 @@ const TextField = ({
   return (
     <S.Wrapper disabled={disabled} error={!!error} inputSize={inputSize}>
       {!!label && (
-        <Heading as="label" htmlFor={name} lineBottom lineColor={lineColor}>
+        <Heading
+          as="label"
+          htmlFor={name}
+          size={headingSize}
+          lineBottom
+          lineColor={lineColor}
+        >
           {label}
         </Heading>
       )}

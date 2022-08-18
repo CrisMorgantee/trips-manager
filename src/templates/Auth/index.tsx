@@ -28,7 +28,7 @@ const Auth = ({ title, children }: AuthProps) => (
         <div>
           <Heading size="huge">Manager your travels!</Heading>
           <S.Subtitle>
-            <strong>TRAVELS MANAGER</strong> is the best and easily travels
+            <strong>TRAVELS MANAGER</strong> is the best and simple travels
             organize platform.
           </S.Subtitle>
         </div>

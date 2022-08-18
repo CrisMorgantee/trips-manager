@@ -69,7 +69,7 @@ export const InputWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    background: ${theme.colors.mainBg};
+    background: ${theme.colors.darkGray};
     border-radius: 0.4rem;
     padding: ${theme.spacings.xxsmall};
     border: 0.2rem solid;

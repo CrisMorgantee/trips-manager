@@ -3,7 +3,7 @@ import * as TextFieldStyles from 'components/TextField/styles'
 import { darken } from 'polished'
 import styled, { css } from 'styled-components'
 
-export const FormWrapper = styled.main`
+export const FormWrapper = styled.div`
   ${({ theme }) => css`
     ${TextFieldStyles.Wrapper} {
       margin: ${theme.spacings.xsmall} 0;

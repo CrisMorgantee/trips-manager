@@ -1,12 +1,5 @@
 import styled, { css } from 'styled-components'
 
-export const Wrapper = styled.div``
-
-export const MonthsList = styled.ul`
-  width: 100%;
-  list-style: none;
-`
-
 export const Points = styled.div`
   ${({ theme }) => css`
     display: flex;
