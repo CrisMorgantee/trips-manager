@@ -6,6 +6,7 @@ import { DrivingDetailsProps } from 'components/DrivingDetails'
 import Header from 'components/Header'
 import MonthItem, { CityProps, MonthItemProps } from 'components/MonthItem'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import * as S from './styles'
 
@@ -18,14 +19,14 @@ const Dashboard = () => {
   const [citys, setCitys] = useState<CityProps[]>([])
   const [drivings, setDrivings] = useState<DrivingDetailsProps[]>([])
 
+  const router = useRouter()
+
   useEffect(() => {
     setMonths([
       { month: 'September', days: '10', amount: 'R$ 500,00' },
       { month: 'August', days: '10', amount: 'R$ 500,00' }
     ])
-  }, [])
 
-  useEffect(() => {
     setDrivings([
       {
         date: '10/09',
@@ -38,9 +39,7 @@ const Dashboard = () => {
         hourStop: '18:10h'
       }
     ])
-  }, [])
 
-  useEffect(() => {
     setCitys([
       {
         city: 'Nova Lima',
@@ -58,7 +57,7 @@ const Dashboard = () => {
   }, [])
 
   const goTo = () => {
-    location.href = '/dashboard'
+    router.push('/dashboard', undefined, { shallow: true })
   }
 
   const handleMoreInfo = ({ month, days, amount }: MonthItemProps) => {
