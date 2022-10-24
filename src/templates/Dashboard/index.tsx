@@ -13,14 +13,16 @@ import Header from 'components/Header'
 import MonthItem, { CityProps, MonthItemProps } from 'components/MonthItem'
 import { Points } from 'components/Points'
 import Image from 'next/image'
+import { UserProps } from 'pages/api/users'
 import { useEffect, useState } from 'react'
 import * as S from './styles'
 
 export type DashboardProps = {
   isVisible?: boolean
+  users: UserProps[]
 }
 
-const Dashboard = () => {
+const Dashboard = ({ users }: DashboardProps) => {
   const [isVisible, setIsVisible] = useState(false)
   const [months, setMonths] = useState<MonthItemProps[]>([])
   const [citys, setCitys] = useState<CityProps[]>([])
@@ -72,6 +74,9 @@ const Dashboard = () => {
         // objectFit="fill"
       />
       <Container>
+        {users?.map((user) => (
+          <div key={user.id}>{user.name}</div>
+        ))}
         <Header
           headingIcon={<Calendar />}
           title="Months"
