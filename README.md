@@ -1,8 +1,8 @@
 
-![React Avançado](https://raw.githubusercontent.com/React-Avancado/boilerplate/master/public/img/logo-gh.svg)
+![Trips Manager](./public/img/logo.svg)
 
-This is a [Next.js](https://nextjs.org/) boilerplate to be used in a course called [React Avançado](https://reactavancado.com.br/).
-![ci](https://github.com/React-Avancado/boilerplate/workflows/ci/badge.svg)
+
+This is a application to management the trips.
 ## What is inside?
 
 This project uses lot of stuff as:
