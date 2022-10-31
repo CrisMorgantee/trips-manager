@@ -64,6 +64,11 @@ export const Text = styled.h3`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.xsmall};
+    margin-right: ${theme.spacings.small};
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     span {
       color: ${theme.colors.green};
@@ -74,17 +79,9 @@ export const Text = styled.h3`
 
 export const DetailText = styled(Text)`
   ${({ theme }) => css`
-    margin-left: 0;
-    margin-right: ${theme.spacings.small};
-    font-size: ${theme.font.sizes.xsmall};
-    color: ${theme.colors.white};
     display: inline-flex;
     align-items: center;
     position: relative;
-
-    &:last-child {
-      margin-right: 0;
-    }
 
     &:first-child {
       &:after {
@@ -95,7 +92,6 @@ export const DetailText = styled(Text)`
         align-items: center;
         border: .05rem solid ${theme.colors.white};
         width: ${theme.spacings.xxsmall};
-
     }
   `}
 `

@@ -13,19 +13,20 @@ import Header from 'components/Header'
 import MonthItem, { CityProps, MonthItemProps } from 'components/MonthItem'
 import { Points } from 'components/Points'
 import Image from 'next/image'
-import { UserProps } from 'pages/api/users'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import * as S from './styles'
 
 export type DashboardProps = {
-  isVisible?: boolean
-  users: UserProps[]
+  isVisible?: boolean  
 }
 
-const Dashboard = ({ users }: DashboardProps) => {
+const Dashboard = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [months, setMonths] = useState<MonthItemProps[]>([])
   const [citys, setCitys] = useState<CityProps[]>([])
+
+  const router = useRouter()
 
   useEffect(() => {
     setMonths([
@@ -54,7 +55,7 @@ const Dashboard = ({ users }: DashboardProps) => {
   const handleVisibilityChange = () => setIsVisible(!isVisible)
 
   const handleAction = () => {
-    location.href = '/drivings'
+    router.push('/drivings', undefined, { shallow: true })
   }
 
   const handleMoreInfo = ({ month, days, amount }: MonthItemProps) => {
@@ -74,9 +75,6 @@ const Dashboard = ({ users }: DashboardProps) => {
         // objectFit="fill"
       />
       <Container>
-        {users?.map((user) => (
-          <div key={user.id}>{user.name}</div>
-        ))}
         <Header
           headingIcon={<Calendar />}
           title="Months"
@@ -101,9 +99,11 @@ const Dashboard = ({ users }: DashboardProps) => {
         </S.MonthsList>
       </Container>
       <ButtonWrapper>
-        <Button as="a" href="/travel" fullWidth icon={<Add />}>
-          Travel Add
-        </Button>
+        <Link href="/travel" passHref>
+          <Button as="a" fullWidth icon={<Add />}>
+            Travel Add
+          </Button>
+        </Link>
         <Button fullWidth icon={<DirectionsCar />}>
           Start Driving
         </Button>

@@ -13,7 +13,7 @@ type TextFieldTypes =
 export type inputSizesProps = 'small' | 'medium' | 'large' | 'adaptative'
 
 export type TextFieldProps = {
-  onInput?: (value: string) => void
+  onInputChange?: (value: string) => void
   headingSize?: HeadingProps['size']
   inputSize?: inputSizesProps
   icon?: JSX.Element
@@ -26,7 +26,7 @@ export type TextFieldProps = {
 } & TextFieldTypes
 
 const TextField = ({
-  onInput,
+  onInputChange,
   headingSize = 'medium',
   inputSize = 'adaptative',
   icon,
@@ -44,7 +44,7 @@ const TextField = ({
     const newValue = e.target.value
     setvalue(newValue)
 
-    !!onInput && onInput(newValue)
+    !!onInputChange && onInputChange(newValue)
   }
 
   return (
