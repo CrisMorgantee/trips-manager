@@ -60,7 +60,7 @@ export const TextWrapper = styled.div`
   `}
 `
 
-export const Text = styled.p`
+export const Text = styled.h3`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.xsmall};
