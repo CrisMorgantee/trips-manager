@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
     "baseUrl": "src",
     "target": "es5",
     "lib": [
