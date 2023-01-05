@@ -2,6 +2,7 @@ import { DocumentText } from '@styled-icons/heroicons-outline'
 import {
   CalendarToday as Calendar,
   CalendarToday,
+  LocationCity,
   Person,
   Save
 } from '@styled-icons/material-outlined'
@@ -80,6 +81,15 @@ const Travel = () => {
               icon={<Person />}
               placeholder="Name"
               onInputChange={(v) => handleInput('employee', v)}
+            />
+
+            <TextField
+              label="City"
+              headingSize="small"
+              lineColor="secondary"
+              icon={<LocationCity />}
+              placeholder="City's"
+              onInputChange={(v) => handleInput('city', v)}
             />
 
             <TextField

@@ -18,10 +18,6 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import * as S from './styles'
 
-export type DashboardProps = {
-  isVisible?: boolean
-}
-
 const Dashboard = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [months, setMonths] = useState<MonthItemProps[]>([])

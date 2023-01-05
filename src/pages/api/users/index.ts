@@ -13,10 +13,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
           include: {
             Trip: {
               select: {
-                city: true,
-                departure_day: true,
-                arrival_day: true,
-                is_driving: true
+                id: true
               }
             }
           }

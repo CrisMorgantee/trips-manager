@@ -17,7 +17,17 @@ export default function userHandler(
       const getUser = async () => {
         try {
           const user = await prisma.user.findFirst({
-            where: { id: Number(id) }
+            where: { id: Number(id) },
+            include: {
+              Trip: {
+                select: {
+                  city: true,
+                  departure_day: true,
+                  arrival_day: true,
+                  is_driving: true
+                }
+              }
+            }
           })
 
           if (user === null)

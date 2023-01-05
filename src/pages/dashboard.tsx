@@ -5,13 +5,14 @@ export default function Dashboard(props: DashboardProps) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('http://localhost:3000/api/users')
-  const users = await res.json()
-  console.log('data: ', users)
+  const user_id = 1
+  const res = await fetch(`http://localhost:3000/api/user/${user_id}`)
+  const user = await res.json()
+  console.log('data: ', user)
 
   return {
     props: {
-      users
+      user
     }
   }
 }
