@@ -72,7 +72,7 @@ export default function tripHandler(
           if (trip === null)
             return res.status(400).json({ message: 'Trip not exists!' })
 
-          const deletedTrip = await prisma.user.delete({
+          const deletedTrip = await prisma.trip.delete({
             where: { id: Number(id) }
           })
 

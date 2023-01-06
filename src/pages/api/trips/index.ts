@@ -47,6 +47,16 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
             }
           })
 
+          is_driving &&
+            (await prisma.driving.create({
+              data: {
+                user_id,
+                trip_id: trip.id,
+                date: departure_day,
+                start: departure_day
+              }
+            }))
+
           return res.status(200).json(trip)
         } catch (error) {
           res.status(200).json(error)
