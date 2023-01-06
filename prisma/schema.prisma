@@ -1,10 +1,10 @@
-generator client {
-  provider        = "prisma-client-js"
+datasource db {
+  provider             = "postgres"
+  url                  = env("DATABASE_URL")
 }
 
-datasource db {
-  provider             = "mysql"
-  url                  = env("DATABASE_URL")
+generator client {
+  provider        = "prisma-client-js"
 }
 
 model User {
@@ -15,23 +15,62 @@ model User {
   password   String
   is_admin   Boolean  @default(false)
   is_active  Boolean  @default(true)
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
   Trip       Trip[]
+  Driving    Driving[]
+  Service    Service[]
 
   @@map("users")
 }
 
 model Trip {
   id            Int      @id @default(autoincrement())
-  user          User     @relation(fields: [user_id], references: [id])
   user_id       Int
+  user          User     @relation(fields: [user_id], references: [id])
   city          String
   is_driving    Boolean  @default(false)
   departure_day DateTime @default(now())
   arrival_day   DateTime @default(now())
+
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
 
+  Driving       Driving[]
+  Service       Service[]
+
   @@map("trips")
+}
+
+model Driving {
+  id            Int      @id @default(autoincrement())
+  user_id       Int
+  user          User     @relation(fields: [user_id], references: [id])
+  trip_id       Int
+  trip          Trip     @relation(fields: [trip_id], references: [id])
+  date          DateTime @default(now())
+  start         DateTime @default(now())
+  stop          DateTime @default(now())
+
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  @@map("drivings")
+}
+model Service {
+  id            Int      @id @default(autoincrement())
+  user_id       Int
+  user          User     @relation(fields: [user_id], references: [id])
+  trip_id       Int
+  trip          Trip     @relation(fields: [trip_id], references: [id])
+  name          String
+  invoice       Int
+  notes         String
+
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  @@map("services")
 }
